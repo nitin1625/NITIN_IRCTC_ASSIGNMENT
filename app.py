@@ -68,6 +68,7 @@ def home():
     return "Welcome to IRCTC API"
 
 
+# Register a User
 @app.route('/register', methods=['POST'])
 def register():
     data = request.get_json()
@@ -95,6 +96,9 @@ def register():
         return jsonify({"msg": e}), 500
 
 
+
+
+#. Login User
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
@@ -108,6 +112,11 @@ def login():
         return jsonify(access_token=access_token, role=user.role), 200
     return jsonify({"msg": "Invalid email or password"}), 401
 
+
+
+
+
+#  Add a New Train
 @app.route('/train', methods=['POST'])
 @jwt_required()
 def add_train():
@@ -130,7 +139,11 @@ def add_train():
         return jsonify({"msg": "Train added successfully"}), 201
     except Exception as e:
         return jsonify({"msg": e}), 500
+    
 
+
+
+#  Get Seat Availability
 @app.route('/availability', methods=['POST'])
 def get_availability():
 
@@ -162,6 +175,8 @@ def get_availability():
         })
     return jsonify(result), 200
 
+
+ # Book a Seat
 @app.route('/book', methods=['POST'])
 @jwt_required()
 def book_seat():
@@ -189,6 +204,8 @@ def book_seat():
     except Exception as e:
         return jsonify({"msg": e}), 500
 
+
+#  Get Specific Booking Details
 @app.route('/booking/<int:booking_id>', methods=['GET'])
 @jwt_required()
 def get_booking(booking_id):
