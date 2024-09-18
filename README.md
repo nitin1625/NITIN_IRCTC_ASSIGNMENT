@@ -57,7 +57,7 @@ To run this API, you need Python 3.6 or higher. Follow these steps:
 4. **Set up the database** (use SQLite for simplicity):
    Update the database URI in the code:
    ```python
-   app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+   app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{user}:{pwd}@{host}/{db}'
    ```
 
 ## Configuration
@@ -67,6 +67,7 @@ Before running the application, you may need to configure the following in your 
 - **Secret Key**: Set a secret key for JWT encoding/decoding.
    ```python
    app.config['JWT_SECRET_KEY'] = 'your_secret_key'
+   app.config['ADMIN_API_KEY'] = 'admin_api_key'
    ```
 
 ## API Endpoints
