@@ -151,11 +151,3 @@ python app.py
 ```
 
 The server will start on `http://127.0.0.1:5000/`.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
-
----
-
-Feel free to contribute to this project by reporting issues or suggesting enhancements!
